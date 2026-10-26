@@ -1,0 +1,38 @@
+Zheng Kuang：作者风格配置
+
+定位
+这是 Zheng Kuang 长期作者风格规则的唯一规范来源，不是普遍数学写作规范。可读版 v5 对作者风格的讨论只作理由说明与举例，不构成第二份规则来源。后续修改优先继承作者已经确认的论文文字，GGD 954 是重要外部参照，但作者定稿文本是风格层最高样本。
+
+1. Mathematics-first / mechanism-first
+- motivation 从数学事实、construction 与 mechanism 中长出来。
+- 段落常用：object/construction -> mathematical action -> consequence -> next mechanism。
+- 少用 commentary-heavy 的 “we emphasize”, “we believe”, promotional adjectives。
+
+2. 主语与动词
+- 优先让数学对象做主语。
+- 偏好 operational verbs：contain, realize, recover, impose, record, determine, commute, project, propagate, break synchronization 等。
+
+3. 公式与句法
+- 短公式在可读时保持 inline；只把长公式、结构性公式或需要后文引用的关系 display。
+- 正式推理通常 prefer “since” over “because”。
+- 句内 consequence 可用 “and thus”。
+- semicolon 克制使用；避免 stacked technical noun phrases，必要时用 of/for/with/at 展开关系。
+
+4. Theorem presentation
+- 不给每个 theorem/proposition/lemma/corollary 加括号标题。
+- 标题保留给 Introduction principal theorems 与少数真正组织全文的 structural statements。
+- 普通 statement 前可用简短 prose 说明作用。
+
+5. Abstract
+- concise, conclusion-driven。
+- 直接交付 ambient class、主要结论与必要条件。
+- 避免 negative framing、comparative promotion、methodological commentary、undefined jargon。
+
+6. Introduction
+- 从 ambient mathematical class 开始，不从特殊 construction 开始。
+- 常用顺序：ambient class/problem -> historical positioning -> mechanism -> principal theorem package -> examples/applications -> paper structure。
+- 历史段落若承担 novelty positioning，不因“能缩短”而随意删除。
+
+7. Frozen author voice
+- 作者亲自修改并确认的句法、连接方式、明确程度与 terminology discipline 是后续修改样本。
+- 风格层的作者选择不需要被一般 style guide 覆盖；数学层仍服从独立核验。

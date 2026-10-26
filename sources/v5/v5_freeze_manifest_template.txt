@@ -1,0 +1,44 @@
+V5 FREEZE MANIFEST
+
+Paper:
+Canonical version/file:
+Manifest date:
+Author style profile version:
+Project profile version:
+
+FROZEN ITEMS
+- Title:
+- Abstract:
+- Introduction architecture / principal theorem package:
+- Theorem statements:
+- Definitions with frozen wording:
+- Global notation:
+- Fixed terminology:
+- Historical/novelty paragraphs:
+- Other:
+
+NOTATION (write LaTeX macros, not visually ambiguous plain text)
+Example:
+- groupoid source/range: \mathsf{s}, \mathsf{r}
+- Bratteli source/range: \mathbf{s}, \mathbf{r}
+
+MODIFICATION IS ALLOWED ONLY FOR
+- confirmed mathematical error
+- genuine ambiguity
+- wrong citation or cross-reference
+- dependency inconsistency
+- notation/terminology violation
+- local prose defect that materially obstructs understanding
+- text explicitly reopened by the author
+
+MATHEMATICAL CHALLENGES TO FROZEN TEXT
+Frozen status does not block a concrete mathematical challenge. A challenge must identify the affected implication/definition/quantifier/estimate/dependency. If the author keeps the text, record the structural reason or mark it as author-stated but not independently verified.
+
+EXPLICITLY REOPENED ITEMS
+- 
+
+KNOWN UNRESOLVED ITEMS / DO NOT CLAIM CLOSED
+- 
+
+CHANGE NOTES
+- date | item | reason | downstream items checked

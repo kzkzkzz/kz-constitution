@@ -1,0 +1,354 @@
+% !TeX program = xelatex
+\documentclass[UTF8,fontset=none,12pt,openany]{ctexbook}
+\usepackage[a4paper,left=28mm,right=25mm,top=27mm,bottom=27mm]{geometry}
+\usepackage{fontspec}
+\IfFontExistsTF{Noto Serif CJK SC}{\setCJKmainfont{Noto Serif CJK SC}[BoldFont={Noto Serif CJK SC Bold}]}{\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]}
+\IfFontExistsTF{Noto Sans CJK SC}{\setCJKsansfont{Noto Sans CJK SC}[BoldFont={Noto Sans CJK SC Bold}]}{\setCJKsansfont{FandolHei-Regular}[Extension=.otf,BoldFont=FandolHei-Bold]}
+\setmainfont{lmroman10-regular.otf}[BoldFont=lmroman10-bold.otf,ItalicFont=lmroman10-italic.otf]
+\setsansfont{lmsans10-regular.otf}[BoldFont=lmsans10-bold.otf,ItalicFont=lmsans10-oblique.otf]
+\setmonofont{lmmono10-regular.otf}
+\usepackage{amsmath,amssymb,mathtools,booktabs,tabularx,longtable,array,enumitem,xcolor,tcolorbox,microtype,hyperref,fancyhdr}
+\tcbuselibrary{breakable}
+\definecolor{deepblue}{HTML}{27465A}
+\definecolor{softblue}{HTML}{EEF4F7}
+\definecolor{warmgray}{HTML}{F5F3EF}
+\definecolor{linegray}{HTML}{D8DEE3}
+\definecolor{accent}{HTML}{7A4B3A}
+\hypersetup{colorlinks=true,linkcolor=deepblue,urlcolor=accent,pdfauthor={Zheng Kuang},pdftitle={数学论文 v5 审查法}}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.35em}
+\emergencystretch=2em
+\setlist[itemize]{leftmargin=2em,itemsep=0.25em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=2.2em,itemsep=0.3em,topsep=0.35em}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\color{deepblue}数学论文 v5 审查法}
+\fancyhead[RO]{\small\color{deepblue}\leftmark}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\newtcolorbox{principle}[1][]{breakable,colback=softblue,colframe=deepblue,boxrule=0.55pt,arc=1mm,left=1em,right=1em,top=0.7em,bottom=0.7em,title=#1,fonttitle=\bfseries}
+\newtcolorbox{casebox}[1][]{breakable,colback=warmgray,colframe=linegray,boxrule=0.45pt,arc=1mm,left=1em,right=1em,top=0.7em,bottom=0.7em,title=#1,fonttitle=\bfseries}
+\newtcolorbox{warningbox}[1][]{breakable,colback=white,colframe=accent,boxrule=0.65pt,arc=1mm,left=1em,right=1em,top=0.7em,bottom=0.7em,title=#1,fonttitle=\bfseries\color{accent}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\eng}[1]{\textit{#1}}
+\newcommand{\vfive}{\textbf{v5}}
+\renewcommand{\chaptername}{第\CJKnumber{\thechapter}章}
+
+\begin{document}
+\frontmatter
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{center}
+\vspace*{2.2cm}
+{\fontsize{28}{34}\selectfont\bfseries\color{deepblue} 数学论文 v5 审查法}\par
+\vspace{0.65cm}
+{\Large 从数学判断到作者声音、冻结文本与源码验证}\par
+\vspace{1.3cm}
+{\large 可读整理本}\par
+\vfill
+{\large Zheng Kuang}\par
+\vspace{0.35cm}
+{\normalsize 2026 年 9 月}\par
+\vspace{1.8cm}
+\rule{0.72\textwidth}{0.5pt}\par
+\vspace{0.5cm}
+{\small 这不是一份独立的证明方法手册。数学判断由 DCGI 执行规则承担；\par
+v5 负责这些判断怎样进入论文，以及怎样保护已经形成的数学秩序。}
+\end{center}
+\end{titlepage}
+
+\chapter*{使用说明}
+\addcontentsline{toc}{chapter}{使用说明}
+
+\vfive{} 不是某一篇论文的第五个文件版本，而是一套在数学论文写作、审稿回应、长篇源码维护与最终定稿中逐渐形成的审查制度。它最初服务于 bounded type、AF-by-discrete、near full groups 与 index map 等项目，但真正值得保留的部分并不是这些项目的专用记号，而是一套关于\emph{如何修改成熟数学文本而不损失其数学结构}的纪律。
+
+这份可读版与 DCGI 的关系必须先说清。DCGI 负责数学与事实判断：一个蕴含是否成立，一个候选反例是否满足全部假设，一个疑点究竟击中 proof 的哪一步，一个结论目前是已证、文献调用、候选、猜想还是待闭合。v5 不再复制这些推理规则。它只负责下一层问题：一旦数学判断取得资格，它应不应该进入文本，进入哪里，改动多少，是否破坏已经冻结的结构、术语、记号和作者声音，以及修改后怎样通过源码与 PDF 的验证链。
+
+因此，日常工作中的优先级是固定的：
+
+\begin{principle}[冲突裁决]
+数学与事实判断以 DCGI 执行规则为准；v5 只规定判断结果怎样进入论文。冻结清单不能阻止对已确认数学错误的修改，最小修改原则只能约束修复范围，不能削弱修复本身。
+\end{principle}
+
+这里的“作者权威”也必须分层。在风格、叙述节奏和已确认 wording 上，作者的选择是最高样本；在数学上，作者并不因为是作者而免于具体核验。反过来，审查者也不能仅凭“感觉这里有 gap”改写冻结文本。双方都必须指出具体作用点。
+
+\begin{principle}[冻结文本的边界]
+冻结保护文本免受无理由改写，但不保护数学主张免受具体质疑。
+\end{principle}
+
+本文主体只讲 v5 自己真正负责的事情。作者长期风格、AF-by-discrete 项目配置和单篇论文冻结状态都被拆成独立配置文件，避免把个人偏好、项目约定和通用审查规则混在同一层。
+
+\tableofcontents
+
+\mainmatter
+\chapter{职责边界与优先级}
+
+\section{v5 为什么不再拥有一套独立的“数学审查法”}
+
+早期版本的 v5 里有一整章数学与结构审查：恢复 theorem 的最短作用链，区分对象层级，检查量词与统一性，做假设删除测试，并给结论标记资格。这些内容本身没有错，但当 DCGI 的执行文本成熟以后，它们已经成为第二份平行规则。两份文本若长期并列，最大的风险不是明显冲突，而是细小措辞逐渐分叉：同一个 proof gap 在一份文件里叫“待闭合”，在另一份里却可能被写成“需要补 lemma”；一份要求反例核对全部 hypotheses，另一份只要求“寻找 counterexample”。
+
+因此 v5 在这一版中主动后退一步。它保留数学审查的\emph{架构接口}，不再复制数学推理的操作细节。
+
+\begin{principle}[分工]
+DCGI 决定一个数学或事实判断有没有资格成立；v5 决定这个判断应不应该以及怎样进入论文文本。
+\end{principle}
+
+这意味着“证明核验”和“exposition audit”仍然必须分账，但前者不由 v5 重新定义。v5 只要求最终报告不能把两张账混成一句话。
+
+\section{数学判断怎样进入论文}
+
+可以把二者的接口理解为一个很短的链条：
+\[
+\text{数学判断}\longrightarrow\text{资格状态}\longrightarrow\text{文本动作}\longrightarrow\text{源码与页面验证}.
+\]
+
+例如，一处疑似缺口经核验后有五种完全不同的后果：
+
+\begin{itemize}
+\item 若已证原 proof 正确，则不因先前怀疑而改动冻结正文；
+\item 若文献调用足够，则补精确引用或依赖说明，而不是重证全部背景；
+\item 若只是候选问题，则可在工作笔记中保留，但不能进入定稿语气；
+\item 若确有 gap，则补 hypothesis、补 lemma、降低 statement，或重写受影响的 proof step；
+\item 若尚待闭合，则最终报告必须把它留在“待核验”一栏，不能用润色隐藏。
+\end{itemize}
+
+这里 v5 的角色不是判断哪一种数学状态成立，而是保证不同状态不会被写成同一种语气。
+
+\section{五份工作文件，不再继续拆分}
+
+日常与 AI 协作只保留五份文件：
+
+\begin{enumerate}
+\item \textbf{DCGI execution}：推理与事实判断；
+\item \textbf{v5 execution}：文本修改与验证纪律；
+\item \textbf{author style profile}：作者长期稳定的句法、段落和 presentation 偏好；
+\item \textbf{project profile}：某一研究项目的固定术语、记号与结构禁区；
+\item \textbf{freeze manifest}：单篇论文当前冻结的内容与可修改条件。
+\end{enumerate}
+
+前两份固定使用，author style profile 与 project profile 按任务附加；freeze manifest 只在某篇论文进入成熟或定稿阶段时建立。这里的“五份”是完整工作栈的上限，不表示每次任务都必须同时存在五个文件。可读版只负责说明这些文件为什么这样分工，不再成为第六份需要每次粘贴的执行规范。
+
+\chapter{冻结文本与修改资格}
+
+\section{成熟论文最大的风险是回归错误}
+
+论文早期，问题通常是“不够完整”；论文成熟以后，风险反而常常来自“继续优化”。一轮全局润色可能把已经统一的术语换掉，恢复曾被删掉的歧义，把 sufficient criterion 写成 characterization，或者让作者原本有意保留的证明节奏被另一种统一风格覆盖。
+
+所以 v5 的默认动作不是重写，而是\textbf{确认修改资格}。
+
+\begin{principle}[修改资格]
+对已冻结文本，只有具体问题才构成修改理由。典型理由包括：已确认数学错误、真实歧义、错误 citation 或 cross-reference、依赖不一致、术语/记号违规，以及确实妨碍理解的局部语言障碍。纯偏好性润色不构成理由。
+\end{principle}
+
+这条原则并不保护旧文字本身。它保护的是已经形成的数学秩序和 revision provenance：多年以后仍能回答“一处变化为什么发生”。
+
+\section{质疑与维持原文都必须定位}
+
+冻结文本不能成为作者拒绝审查的盾牌，也不能成为审查者任意拆解的靶子。
+
+如果 AI 质疑一段冻结 proof，它必须指出具体受影响的 implication、definition use、quantifier、estimate 或 dependency。若只能说“这里似乎不够严谨”，就还没有取得修改资格。
+
+作者若维持原文，也应指出该步成立的结构理由；若只是作者确认而尚未独立核验，就应把这种身份保留下来。风格问题则不同：一句话是否是作者想要的语气，作者本身就是最终判断者。
+
+\begin{warningbox}[对称性]
+“作者说没问题”不是数学证明；“审查者觉得有问题”也不是数学反例。数学层的争议必须落到具体步骤，风格层才由作者直接裁决。
+\end{warningbox}
+
+\section{最小修改不是保守主义}
+
+一处问题只影响一句，就不要改一段；只影响一个符号，就不要重设计全篇 notation；一个 referee objection 只要求补一条依赖，就不要借机重构整节。最小修改的价值在于降低回归错误，并保留每一次 revision 的因果边界。
+
+但是当数学错误确已确认时，最小修改不能成为逃避 downstream 修复的借口。若一个 theorem 的 hypothesis 改变，所有依赖它的 corollary、introduction claim、abstract wording 与 cross-reference 都必须重新检查。所谓“最小”，是\emph{覆盖全部受影响范围后的最小}。
+
+\section{冻结状态必须有载体}
+
+仅靠聊天记忆说“这一段已经 frozen”并不可靠。每篇成熟论文都应维护一份很短的 freeze manifest，至少记录：canonical version、冻结日期、冻结的 theorem package、标题、摘要、关键术语、全局记号、允许修改的理由，以及被作者明确重新打开的项目。
+
+为了避免纯文本抹掉字体差异，记号必须直接写 LaTeX 源。例如不能写两行相同的“s/r”，而应写：
+
+\begin{center}
+\code{\textbackslash mathsf\{s\}, \textbackslash mathsf\{r\}} for groupoids,\qquad
+\code{\textbackslash mathbf\{s\}, \textbackslash mathbf\{r\}} for Bratteli diagrams.
+\end{center}
+
+这不是排版细节。freeze manifest 的任务之一恰恰是消除这种歧义。
+
+\chapter{通用术语与记号纪律}
+
+\section{技术名词可能成为领域标准}
+
+在成熟领域，术语错误会造成理解障碍；在尚未完全标准化的领域，术语错误还可能被后续文章继承。v5 因此把 terminology 当作数学设计的一部分。
+
+新的技术名词只有在三件事同时成立时才值得引入：它对应稳定对象或机制，它会反复使用，现有标准术语不足以承担这一角色。否则应写成普通 prose。
+
+\begin{casebox}[Pseudo-terminology]
+“boundary calculus”, “continuation space”, “section group”, “common invariant lift”, “homology coordinate”, “abstract boundary graph”, “entire section group”, “connector actions” 这类短语，如果没有正式定义和长期用途，就不应因为听起来像术语而进入正文。
+\end{casebox}
+
+术语的优先级是：标准文献已有名称，作者此前论文已经稳定使用的名称，本篇真正需要的新名称。改名必须有数学收益，不能只因为新名字更形象。
+
+\section{全局记号是长期契约}
+
+一个 recurring symbol 在同一篇论文里只能有一个稳定意义。引入新符号前，先检查全文旧用途以及与相邻对象的视觉碰撞。
+
+这里的通用原则只有一条：\textbf{让 notation 帮助读者辨认对象层级，而不是迫使读者依赖上下文猜测。} 至于具体用哪一种字体，属于 project profile，不属于普遍规则。
+
+\section{不要把生成集写成生成后的对象}
+
+当论文使用 groups、inverse semigroups、pseudogroups 或 groupoids 时，生成数据与闭包后的对象必须区分。有限 inverse-closed family of bisections 并不等于它生成的 inverse semigroup；partial transformation 在一点未定义，也不等于在那里作用为 identity。
+
+这类错误表面上是 wording，实质上会改变 domain、composition 与 restriction 的数学含义，所以属于 v5 真正需要负责的“文本—对象接口”。
+
+\chapter{作者声音配置：不是普遍规范}
+
+\section{为什么作者风格必须单列}
+
+v5 的早期文本把 GGD 954 风格和通用写作纪律混在一起。这会产生一种误导：仿佛“prefer since”“短公式尽量 inline”“普通 lemma 不加标题”是所有数学论文的普遍规范。它们不是。这些规则之所以长期有效，是因为它们已经成为作者稳定的 presentation language。
+
+因此，作者声音被单列为 author style profile。\textbf{author style profile 是当前作者风格规则的唯一规范来源。} 本章只解释为什么要单列这一层，并用少量例子展示 profile 中已经存在的规则；若本章与配置文件的具体措辞发生差异，以配置文件为准。v5 核心只规定一件事：后续修改应继承作者已经确认的稳定样本，而不是每轮重新发明风格。
+
+\section{数学先行、机制先行}
+
+在当前作者风格中，段落通常由数学对象和 construction 驱动：先引入对象，说明它做什么，给出 algebraic/geometric consequence，再连接到下一个 mechanism。motivation 从数学运行中长出来，而不是靠“we emphasize”“it is striking”一类评论强行添加。
+
+一个典型段落的内在节奏是：
+\[
+\text{object/construction}\to\text{action}\to\text{consequence}\to\text{next mechanism}.
+\]
+
+这不是公式化写作，而是避免 commentary 抢走数学主语。
+
+\section{句法、公式与 theorem presentation}
+
+例如，当前 author style profile 记录了这样一些稳定偏好：优先使用 operational verbs；短公式能 inline 时不单独 display；正式推理中通常偏好 “since”；句内 consequence 常用 “and thus”；semicolon 克制使用；普通 proposition、lemma、corollary 不因导航需要全部加括号标题，标题留给 introduction principal theorems 与真正组织全文的 structural statements。这里列举它们是为了说明配置的性质，不构成第二份规范清单。
+
+同一 profile 还记录 abstract 与 introduction 的长期偏好，例如 abstract 通常短而结论驱动，introduction 从 ambient mathematical class 开始，再进入 objective、historical positioning、main mechanisms、principal theorem package、examples 与结构说明。具体措辞与后续更新仍只维护在 author style profile 中。
+
+这些规则全部属于 author style profile。另一位作者完全可以选择不同的合法风格，而 v5 不应把个人声音伪装成普遍数学规范。
+
+\chapter{源码修改、exposition 与编译验证}
+
+\section{证明核验与 exposition audit 分开记账}
+
+一篇论文可以 exposition 很清楚但 proof 尚未独立验证；也可以数学正确，却因为 notation 和 dependency 没写清而难以被审稿人确认。v5 要求两张账分开。
+
+\begin{principle}[两张账]
+“没有发现 exposition 问题”不等于“证明正确”；“尚未独立核验证明”也不等于“证明有 gap”。
+\end{principle}
+
+数学核验交给 DCGI；v5 负责把核验状态写进审查报告，并确保不同状态不被一种笼统措辞压平。
+
+\section{每次源码修改都做本地审查}
+
+一次 source modification 后，至少检查：术语是否仍一致，notation 是否碰撞，cross-reference 是否受影响，statement strength 是否被措辞改变，周围 prose 是否仍属于作者声音。若改动触及 theorem hypothesis 或 definition，则再向 downstream 扩张检查范围。
+
+局部任务与全局 audit 是两种模式。用户只要求修一段时，不应借机重写全篇；只有用户明确要求全局 audit，才主动扫描 terminology、notation、titles、citations、labels、cross-references、style 与 build warnings。
+
+\section{编译是验证链，不是数学裁判}
+
+成熟版本应 fresh rebuild，避免旧 auxiliary files 掩盖问题。随后检查 unresolved references/citations、duplicate labels、bibliography anomalies、theorem numbering、overfull/underfull boxes、figure/table placement，并实际查看 PDF。
+
+\begin{warningbox}[源码 clean 不等于页面 clean，也不等于数学 clean]
+LaTeX 没有 fatal error 只能说明构建链在某种意义下闭合。它不能验证 theorem dependency，也不能保证页面没有孤行、公式碰撞、标题断裂或不自然换页。
+\end{warningbox}
+
+\section{最终报告的语气必须有资格}
+
+数学与事实结论的身份标签及其适用范围，以 DCGI execution 为唯一来源。v5 不重新定义这些标签，只要求最终报告忠实保留 DCGI 已给出的资格差别，并把数学与事实判断同作者选择、写作建议和结构建议分账呈现。
+
+\chapter{项目配置：为什么必须独立存放}
+
+\section{项目规则不是 v5 核心}
+
+AF-by-discrete 项目中有许多非常强的固定规则：groupoid 与 Bratteli 的 source/range 字体必须不同，path-space notation 已冻结，boundary 不能自动叫 singularity，核心 germs 必须 depth-preserving，“orbit transversal”取代旧用语，“connector actions”不能作为未定义技术词。这些规则非常重要，但它们的重要性来自当前数学对象，而不是来自“数学论文应该这样写”。
+
+所以项目规则必须进入独立 project profile。\textbf{project profile 是当前项目术语、记号与结构约束的唯一规范来源。} 本章只解释为什么这些规则不能混入 v5 core，并引用少量例子说明其性质；若本章与配置文件的具体条目发生差异，以 project profile 为准。写另一篇完全不同主题的论文时，不应把 “depth-preserving” 之类检查项自动带过去。
+
+\section{配置文件的最低职责}
+
+一个 project profile 应只记录长期跨论文稳定的内容：固定 notation、标准 terminology、对象层级 distinction、项目特有的禁区，以及跨论文共同的 citation/definition conventions。单篇文章特有的 frozen abstract、theorem package 或局部符号仍然属于 freeze manifest。
+
+这形成四层边界：
+
+\begin{center}
+\begin{tabularx}{0.9\textwidth}{>{\bfseries}p{3.3cm}X}
+\toprule
+层级 & 负责内容 \\
+\midrule
+v5 core & 修改资格、术语/记号纪律、作者声音继承、源码与编译验证 \\
+author profile & 长期个人写作风格与 presentation 偏好 \\
+project profile & 一类研究项目共享的数学术语、记号与结构约束 \\
+freeze manifest & 单篇论文当前已经冻结的对象与版本状态 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\chapter{典型案例：规则为什么存在}
+
+\section{“principal elementary groupoid”}
+
+若论文采用的标准定义已经把 principality 包含在 “elementary groupoid” 中，那么 “principal elementary groupoid” 不是更严谨，而是冗余。正确动作是先确认 definition，再删掉重复 qualifier。这里展示的是通用术语纪律：修改从对象定义出发，而不是从英语感觉出发。
+
+\section{groupoid 与 Bratteli 的 source/range}
+
+同一篇论文同时出现 groupoid 和 Bratteli diagram 时，若两边都用视觉完全相同的 $s,r$，长篇 proof 中读者会不断依赖上下文猜对象层级。当前 project profile 的一个例子是：groupoid 使用 $\mathsf{s},\mathsf{r}$，Bratteli diagram 使用 $\mathbf{s},\mathbf{r}$。
+
+这个案例也说明为什么纯文本 freeze manifest 必须保存 LaTeX 宏，而不能只写“s/r”。
+
+\section{boundary 不是 singularity}
+
+finite tile boundary 是 approximation-relative data；persistent boundary 描述跨深度持续现象；singularity 则是 germ/local-action 层面的性质。它们可能相关，但不能靠词语相似直接等同。
+
+如果一句话把三者压成一个名词，后续关于 index、homology、almost finiteness 或 germ groups 的 dependency 都可能被压扁。这是 project profile 中必须长期保留的 distinction。
+
+\section{depth-changing self-similar language}
+
+rooted-tree literature 中通过 sections 进入更深 subtree 的语言在 self-similar groups 中完全自然，但 AF-by-discrete 的核心机制是 depth-preserving。把前者直接写进主 proof，会把 external comparison 偷渡成 ambient structure。当前 project profile 因此把 depth-changing germs 限定为显式 external comparison，而不让核心论证依赖它们。
+
+\section{为什么删掉 “connector actions”}
+
+“connector actions” 可能同时指 connector edges、moving connecting points 的 elements，或 connectors 附近的 local actions。如果没有定义，它的简洁来自压缩歧义，而不是压缩数学。因此 v5 的术语纪律要求把它拆回直接描述。
+
+\section{Abstract 中的 “characterization”}
+
+正文只有 sufficient criterion，而摘要写成 “we characterize when...” 时，问题不是宣传语稍强，而是 theorem strength 改变。数学资格由 DCGI 判断；v5 的文本动作则很直接：把 abstract 降回 theorem 真正证明的分辨率，而不是为了保留一个漂亮动词去补造更强 theorem。
+
+\section{普通 lemma 为什么不需要标题}
+
+一个局部传递 lemma 若被命名成 “Boundary Propagation Lemma”，读者会自然把它当成全文核心机制。标题会改变 perceived dependency graph。作者风格配置因此只给真正组织全文的 statements 命名，其余用前置 prose 解释作用。
+
+\section{成功编译但 proof 仍可能有 gap}
+
+一篇百页论文可以做到零 unresolved references、零 bibliography error、零 overfull box，却仍然在一个 “therefore” 中使用未声明 hypothesis。反过来，一个 warning 也可能只是排版噪声。这解释了为什么 build/render audit 永远不能替代数学判断。
+
+\section{冻结文本中的数学质疑}
+
+如果一段 frozen proof 被指出可能缺 hypothesis，v5 不允许两种偷懒：审查者不能只说“这里可疑”，作者也不能只说“我确认这里没问题”。前者必须定位 proof step，后者必须给出使该步成立的结构理由，或明确承认目前只是作者陈述。若最后确认数学正确，则 frozen wording 不因一次失败的质疑而自动失去冻结状态。
+
+\chapter{从可读版派生执行层}
+
+\section{为什么执行页必须更短}
+
+可读版保存理由，执行页只保存动作。若把所有案例来源、方法论术语和历史解释一起塞给 AI，它容易在回答中朗读规则，甚至让方法论压过当前对象。因此 v5 execution 应只有文本修改真正需要的指令，并把数学判断明确交给 DCGI。
+
+\section{固定工作栈}
+
+日常使用时，先加载 DCGI execution 与 v5 execution。涉及作者长期风格时附 author style profile，涉及 AF-by-discrete 项目时附 project profile；只有某篇论文进入成熟或定稿阶段后，才为该论文建立并附上 freeze manifest。完整工作栈最多五份文件，不再继续拆分。
+
+\section{一个成熟版本什么时候可以停止}
+
+停止条件不是“没有任何更漂亮的句子”。更合理的停止线是：数学与事实层没有已知未闭合点，terminology 与 notation 稳定，作者确认的结构不再漂移，源码构建 clean，PDF rendering clean，剩余差异只是偏好。
+
+成熟论文的最后纪律往往不是继续优化，而是知道什么时候不再动它。
+
+\backmatter
+\chapter*{结语}
+\addcontentsline{toc}{chapter}{结语}
+
+v5 最终保护的不是一套固定句式，而是成熟论文内部已经形成的数学秩序。它要求 theorem 的强度与 proof 对齐，术语与对象对齐，notation 与层级对齐，author voice 与作者真实选择对齐，源码修改与明确问题对齐。
+
+它因此不是第二套数学推理法。数学判断由 DCGI 负责，v5 承担的是另一种较少被单独描述的工作：\emph{让一个有资格成立的数学判断，以最少损失进入一篇已经拥有历史、风格和内部秩序的论文。}
+
+当这种秩序已经稳定，审查的最高形式反而是克制：不为了审查而制造新的变化。
+
+\end{document}

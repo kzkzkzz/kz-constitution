@@ -1,0 +1,35 @@
+AF-by-discrete / bounded-type 项目配置
+
+定位
+这是 AF-by-discrete / bounded-type 项目族术语、记号与结构约束的唯一规范来源。这些规则只适用于该项目族，不是所有数学论文的普遍规范；可读版 v5 中的相关内容只作理由说明与举例。
+
+记号
+- groupoid source/range: \mathsf{s}, \mathsf{r}
+- Bratteli diagram source/range: \mathbf{s}, \mathbf{r}
+- the typography is intentional: the diagram is \mathsf{B}, while its Bratteli source/range maps are \mathbf{s}, \mathbf{r}; do not normalize these fonts to match the symbol \mathsf{B}.
+- infinite path space: \Omega(\mathsf B)
+- length-n paths: \Omega_n(\mathsf B)
+- finite paths: \Omega^*(\mathsf B)
+- inverse-semigroup generating set: \mathcal S
+- topological full group: \mathsf F(\mathfrak G)
+- abelianization: \mathsf F(\mathfrak G)_{\mathrm{ab}}
+- identity germ notation when needed: (\mathrm{Id},\xi)
+
+固定术语
+- use “orbit transversal”, not “full reduction”
+- use “tile”, not “unit-space tile”
+- use “decomposition” where this terminology has been fixed; do not reintroduce “splitting” without a real distinction
+- “elementary groupoid” already includes principality in the adopted definition; avoid redundant “principal elementary groupoid”
+- use direct prose instead of undeclared “connector actions”
+- prefer “closed path labeled by the generators” where this wording is fixed
+
+结构纪律
+- AF-by-discrete core examples are depth-preserving. Do not introduce depth-changing prefix substitutions/self-similar germs into the core argument; use them only as explicitly marked external comparisons.
+- finite tile boundary, persistent boundary and singularity are different levels of structure. Do not infer singularity merely from being a boundary point.
+- a finite tile is a graph with boundary. Deleting boundary edges gives the Cayley graph of the finite-level elementary AF subgroupoid. Boundary edges are additional finite-level data.
+- the graph of germs of an exceptional orbit is a graph without boundary, obtained by gluing relevant tile copies along their boundary points according to the germ data. Do not identify it with a finite tile.
+- distinguish a finite generating family from the inverse semigroup/groupoid it generates; partial undefined action is not identity action.
+
+术语纪律
+- before introducing a new recurring technical noun phrase, check Nekrashevych/standard literature and earlier papers in this project.
+- no pseudo-terminology unless formally defined and genuinely reused.

@@ -1,0 +1,19 @@
+数学论文 v5：纯执行文本
+
+优先级
+1. 数学与事实判断以 DCGI 执行规则为准。
+2. v5 只决定这些判断怎样进入论文文本。
+3. 冻结清单不能阻止修正已确认的数学错误；最小修改原则只约束改动范围。
+
+执行要求
+1. 先确认任务范围：局部修改、全局 audit、摘要/引言、术语记号、源码修复或最终定稿。不要把局部任务扩大成全篇重写。
+2. 若附有 freeze manifest，先读它；未附时，不索要、不自行臆定任何文本已冻结，但仍遵守最小修改。若已有冻结清单，冻结文本只有在存在具体理由时修改：已确认数学错误、真实歧义、错误 citation/cross-reference、依赖不一致、术语/记号违规或确实妨碍理解的局部语言障碍。纯偏好性润色不改。
+3. 若冻结文本涉及数学争议，质疑与维持原文都必须定位具体 implication、definition、quantifier、estimate 或 dependency。数学资格按 DCGI 处理。
+4. 做最小必要修改，但必须覆盖全部 downstream 影响。不要用“最小修改”逃避因 theorem/hypothesis 变化而必须同步的 abstract、introduction、corollary 或 cross-reference。
+5. 术语优先采用标准文献和作者既有稳定用法。不要引入未定义 pseudo-terminology。新 recurring symbol 引入前检查全文旧用途与视觉碰撞。
+6. 作者风格的唯一规范来源是 author style profile。不要从可读版重新提取或自行补充风格规则；不要把个人风格偏好当成数学正确性。已确认作者 wording 是风格层最高样本。
+7. 项目专用术语、notation 与结构禁区的唯一规范来源是 project profile；不要从可读版复制规则，也不要自动推广到其他项目。
+8. 文献与原创性归属：对每项编号结果及摘要/引言中的新颖性表述核对已有文献。数学层是否已知、是否仅为已有结果的推论或特例，由 DCGI 判断；v5 负责在正文明确归属并核对精确出处。已知引理、标准技术、旧构造、重述和直接推论不得被包装为作者原创。区分“方法已有”和“结论已被证明”。文献优先性无法确认时，标为待核验，不以检索不到结果断言首次发现；补引文后核对 abstract、theorem、proof 与 bibliography 的一致性。
+9. 每次源码修改后做 local audit：terminology、notation、statement strength、cross-reference、citation、surrounding author voice。
+10. 修改完成后，若当前环境具备论文实际工具链与 PDF 查看能力，做 fresh rebuild，检查 references/citations/labels、bibliography、numbering、overfull/underfull boxes，并实际查看修改页及相邻页。若无法实际编译或查看 PDF，明确说明“未验证”，不得声称构建、警告检查或页面检查已经通过。
+11. 最终报告分开写：确定修复、作者选择、需要进一步数学核验的事项。数学与事实结论的身份标签遵循 DCGI；写作和结构建议直接作为建议提出。

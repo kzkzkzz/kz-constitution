@@ -1,0 +1,103 @@
+{
+  "edition": "公开版第一版",
+  "date": "2026-10-26",
+  "说明": "本表仅列公开底本；历史原件不随公开版分发。",
+  "sources": [
+    {
+      "id": "D1",
+      "title": "DCGI 理由档案",
+      "path": "sources/DCGI/DCGI_v0.3.tex",
+      "format": "tex",
+      "bytes": 102585,
+      "sha256": "212231fb037089047cd0dbb0268f99e66e7d2fa345724a5fe97b9474121113ea"
+    },
+    {
+      "id": "D2",
+      "title": "DCGI 当前执行文本",
+      "path": "sources/DCGI/DCGI_v0.3_execution.txt",
+      "format": "txt",
+      "bytes": 4334,
+      "sha256": "d7c2b69007eceaf2553b43de64ad3f8e9108edc90658376a5771986cb9b6f0bb"
+    },
+    {
+      "id": "V1",
+      "title": "数学论文 v5 审查法",
+      "path": "sources/v5/Mathematical_Paper_v5_Audit_Method.tex",
+      "format": "tex",
+      "bytes": 25654,
+      "sha256": "d053dd01d48bf4d062a47f5bedb0c9b57ea6c8a88ec7e20f730a3a42f28a0adc"
+    },
+    {
+      "id": "V2",
+      "title": "v5 当前执行文本",
+      "path": "sources/v5/v5_execution.txt",
+      "format": "txt",
+      "bytes": 3065,
+      "sha256": "cb7b82a097d8919640100276fdc0bb0ce7e4d3e2d4d43bbf58536f3d4963d05e"
+    },
+    {
+      "id": "V3",
+      "title": "作者风格配置",
+      "path": "sources/v5/v5_author_style_profile.txt",
+      "format": "txt",
+      "bytes": 2280,
+      "sha256": "c2ea6c347bb7321679d212bbae5292a807ebc3e6c0090f441aeef30c98d339fe"
+    },
+    {
+      "id": "V4",
+      "title": "AF-by-discrete 项目配置",
+      "path": "sources/v5/v5_AF_by_discrete_project_profile.txt",
+      "format": "txt",
+      "bytes": 2567,
+      "sha256": "56e32582a46eef75c4acf86e8079b3073cca5c12bf4eb80642c160202aa2b447"
+    },
+    {
+      "id": "V5",
+      "title": "单篇论文冻结清单模板",
+      "path": "sources/v5/v5_freeze_manifest_template.txt",
+      "format": "txt",
+      "bytes": 1266,
+      "sha256": "efafd2e841462a08c704949531d8cfbfce8c37cb95b8918da5535e9620b60555"
+    },
+    {
+      "id": "J1",
+      "title": "期刊选择宪法",
+      "path": "sources/Journal_Selection/Journal_Selection_Constitution_v0_2_1.md",
+      "format": "md",
+      "bytes": 9515,
+      "sha256": "2d87ddcb88f5fb6ad26b78cbb90072143210881fbbe30fdee148631d92186dc5"
+    },
+    {
+      "id": "J2",
+      "title": "期刊选择执行协议",
+      "path": "sources/Journal_Selection/Journal_Selection_Execution_v0_2_1.md",
+      "format": "md",
+      "bytes": 6766,
+      "sha256": "98e5cb9e489d50acfc640975540e2345ad62dbb5242701c98219585de6f9e817"
+    },
+    {
+      "id": "S1",
+      "title": "论文压力测试宪法",
+      "path": "sources/Stress_Test/Adversarial_Paper_Stress_Test_Constitution_v0_3.md",
+      "format": "md",
+      "bytes": 33956,
+      "sha256": "d4175c095c96d9673c2d8ac3dc6b4607b64e9162b0d14252aa5542337f2a5eca"
+    },
+    {
+      "id": "S2",
+      "title": "论文压力测试执行协议",
+      "path": "sources/Stress_Test/Adversarial_Paper_Stress_Test_Execution_v0_3.md",
+      "format": "md",
+      "bytes": 20949,
+      "sha256": "6e90118631674d99d8934ea9b29df90d9e14eaa12ffd46c65e345f1dcdfad4e1"
+    },
+    {
+      "id": "A1",
+      "title": "执行澄清与首次阅读简报",
+      "path": "sources/Compilation/A1_Execution_Clarifications_Conversation_2026-10-20.md",
+      "format": "md",
+      "bytes": 1443,
+      "sha256": "a93a3c8e4f9db03870554808f6a41f56af2f0d9a7047140e94632638b4299167"
+    }
+  ]
+}

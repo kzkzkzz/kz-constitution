@@ -1,0 +1,28 @@
+The kz Constitution — public edition licence and rights notices
+
+Copyright (c) 2026 Zheng Kuang.
+
+Except as noted below, text and other original copyrightable material authored
+by Zheng Kuang and distributed in this repository, including the Constitution's
+source documents, compiled AI execution edition, human-readable PDF, and
+accompanying explanations, are licensed under the Creative Commons Attribution
+4.0 International (CC BY 4.0) licence.
+
+Official licence: https://creativecommons.org/licenses/by/4.0/
+Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode
+SPDX identifier: CC-BY-4.0
+
+Attribution: The kz Constitution, Zheng Kuang, Public Edition 1 (2026),
+https://github.com/kzkzkzz/kz-constitution.
+
+The source code in build/build_public_edition.py is instead licensed under the
+MIT License; see build/LICENSE-MIT.
+
+Only rights held by the licensor are granted. Citations, third-party writings,
+quoted passages, and works attributed to other authors retain their own rights.
+In particular, the seven philosophical references in the intellectual-history
+section are cited, not relicensed. Neither their full texts nor permissions to
+republish them are included in this repository.
+
+本许可仅覆盖作者有权授权的部分。第三方文献、引文及所引思想前史文章
+不因本仓库公开而取得新的许可证。
