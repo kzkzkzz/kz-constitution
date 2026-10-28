@@ -17,10 +17,10 @@ from pypdf import PdfReader
 ROOT = Path(__file__).resolve().parents[1]
 WORK = ROOT / '.build'
 OUT = ROOT / 'editions'
-EDITION = '公开版第一版'
-DATE = '2026-10-26'
-PDF_NAME = 'The_kz_Constitution_Public_Edition_1.pdf'
-AI_NAME = 'The_kz_Constitution_AI_Execution_Public_Edition_1.md'
+EDITION = '公开版第一版修订 1.1'
+DATE = '2026-10-28'
+PDF_NAME = 'The_kz_Constitution_Public_Edition_1_1_2026-10-28.pdf'
+AI_NAME = 'The_kz_Constitution_AI_Execution_Public_Edition_1_1_2026-10-28.md'
 
 SOURCES = [
     ('D1', 'DCGI 理由档案', 'sources/DCGI/DCGI_v0.3.tex', 'tex'),
@@ -31,7 +31,7 @@ SOURCES = [
     ('V4', 'AF-by-discrete 项目配置', 'sources/v5/v5_AF_by_discrete_project_profile.txt', 'txt'),
     ('V5', '单篇论文冻结清单模板', 'sources/v5/v5_freeze_manifest_template.txt', 'txt'),
     ('J1', '期刊选择宪法', 'sources/Journal_Selection/Journal_Selection_Constitution_v0_2_1.md', 'md'),
-    ('J2', '期刊选择执行协议', 'sources/Journal_Selection/Journal_Selection_Execution_v0_2_1.md', 'md'),
+    ('J2', '期刊选择执行协议', 'sources/Journal_Selection/Journal_Selection_Execution_v0_2_2.md', 'md'),
     ('S1', '论文压力测试宪法', 'sources/Stress_Test/Adversarial_Paper_Stress_Test_Constitution_v0_3.md', 'md'),
     ('S2', '论文压力测试执行协议', 'sources/Stress_Test/Adversarial_Paper_Stress_Test_Execution_v0_3.md', 'md'),
     ('A1', '执行澄清与首次阅读简报', 'sources/Compilation/A1_Execution_Clarifications_Conversation_2026-10-20.md', 'md'),
@@ -62,7 +62,7 @@ def write_ai(records):
     by_id = {r['id']: r for r in records}
     text = '''# The kz Constitution
 
-**AI 执行合订本｜公开版第一版｜2026-10-26｜依据 R5.1 整理**
+**AI 执行合订本｜公开版第一版修订 1.1｜2026-10-28｜Journal Selection v0.2.2**
 
 ## 组织说明
 
@@ -141,7 +141,7 @@ PREAMBLE = r'''\documentclass[UTF8,fontset=none,11pt]{ctexart}
 \definecolor{gold}{HTML}{A68452}
 \usepackage[unicode,colorlinks=true,linkcolor=ink,urlcolor=ink]{hyperref}
 \usepackage{bookmark}
-\hypersetup{pdfauthor={Zheng Kuang},pdftitle={The kz Constitution — 公开版第一版}}
+\hypersetup{pdfauthor={Zheng Kuang},pdftitle={The kz Constitution — 公开版第一版修订 1.1}}
 \ctexset{section={format=\Large\sffamily\bfseries\color{ink}},subsection={format=\large\sffamily\bfseries\color{ink}},subsubsection={format=\normalsize\sffamily\bfseries\color{ink}}}
 \setcounter{secnumdepth}{0}
 \setlength{\parindent}{0pt}
@@ -154,7 +154,7 @@ PREAMBLE = r'''\documentclass[UTF8,fontset=none,11pt]{ctexart}
 \providecommand{\pandocbounded}[1]{#1}
 \pagestyle{fancy}\fancyhf{}
 \fancyhead[L]{\small\sffamily\color{muted}The kz Constitution}
-\fancyhead[R]{\small\sffamily\color{muted}公开版第一版}
+\fancyhead[R]{\small\sffamily\color{muted}公开版修订 1.1}
 \fancyfoot[C]{\small\color{muted}\thepage}
 \renewcommand{\headrulewidth}{0.3pt}
 \clubpenalty=10000\widowpenalty=10000\raggedbottom
@@ -260,14 +260,14 @@ def cover_pdf():
 {\sffamily\color{muted}\large 研究方法与协作规则}\par
 \vspace{9mm}{\color{gold}\rule{25mm}{1.2pt}}\par\vspace{12mm}
 {\fontsize{32}{40}\selectfont\sffamily\bfseries\color{ink}The kz Constitution}\par
-\vspace{9mm}{\LARGE 公开版第一版}\par
-\vspace{5mm}{\large 依据 R5.1 整理 · 2026 年 10 月 26 日}\par
+\vspace{9mm}{\LARGE 公开版第一版修订 1.1}\par
+\vspace{5mm}{\large 以 R5.1 为底本 · 2026 年 10 月 28 日修订}\par
 \vspace{15mm}{\large 匡正\quad Zheng Kuang}\par
 \vfill
 {\large\sffamily\bfseries\color{ink}语言与形成历史}\par
 作者的哲学与心理学输入使用中文，数学输入使用英文。本合订本保留各章形成时的语言与原有中英混用。目录、导读和版本说明使用中文。
 \medskip
-本书保留 DCGI 与 v5 的完整理由档案，以及期刊选择和论文压力测试的规范与执行文本。私人经历记录与历史源包另存于原工作档案。本 PDF 不嵌入附件。
+本书保留 DCGI 与 v5 的完整理由档案，以及期刊选择和论文压力测试的规范与执行文本。Journal Selection 宪法 v0.2.1 保持不变；执行协议补充 2026-10-28 的编辑初筛检验。私人经历记录与历史源包另存于原工作档案。本 PDF 不嵌入附件。
 \medskip
 底本各自保留内部页码；下页目录和 PDF 书签使用合订本的总页序号。版本及来源说明见公开仓库中的 \path{RELEASE.md} 与 \path{SOURCE_MAP.json}。
 \vspace*{6mm}
@@ -370,9 +370,9 @@ def build_volume(parts):
                         rect.x1=page.rect.width-60
                         page.insert_link({'kind':fitz.LINK_GOTO,'from':rect,
                                           'page':dest_page-1,'to':fitz.Point(0,0)})
-    writer.set_metadata({'title':'The kz Constitution — 公开版第一版',
+    writer.set_metadata({'title':'The kz Constitution — 公开版第一版修订 1.1',
                          'author':'Zheng Kuang',
-                         'subject':'DCGI、v5、期刊选择与论文压力测试；依据 R5.1 整理的公开版',
+                         'subject':'DCGI、v5、期刊选择与论文压力测试；基于 R5.1，更新 Journal Selection v0.2.2',
                          'keywords':'DCGI, 闭依开生法, v5, 数学论文, 期刊选择, 压力测试',
                          'creator':'XeLaTeX / Pandoc / PyMuPDF'})
     writer.set_pagemode('UseOutlines')

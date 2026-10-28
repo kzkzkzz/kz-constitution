@@ -1,16 +1,16 @@
 cff-version: 1.2.0
-message: "引用本项目时，请引用 The kz Constitution 公开版第一版。"
+message: "引用本项目时，请引用当前 The kz Constitution 公开版第一版修订 1.1。"
 title: "The kz Constitution"
 authors:
   - family-names: "Kuang"
     given-names: "Zheng"
-version: "Public Edition 1"
-date-released: "2026-10-26"
+version: "Public Edition 1.1"
+date-released: "2026-10-28"
 url: "https://github.com/kzkzkzz/kz-constitution"
 abstract: "A personal working constitution for AI-assisted mathematical research, writing, journal selection, and adversarial paper stress testing."
 preferred-citation:
   type: report
-  title: "The kz Constitution: Public Edition 1"
+  title: "The kz Constitution: Public Edition 1.1"
   authors:
     - family-names: "Kuang"
       given-names: "Zheng"

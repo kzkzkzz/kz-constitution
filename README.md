@@ -2,7 +2,9 @@
 
 *A personal working constitution for AI-assisted mathematical research*
 
-**公开版第一版（Public Edition 1） · 2026-10-26 · Zheng Kuang（匡正）**
+**当前发行：公开版第一版修订 1.1（Public Edition 1.1） · 2026-10-28 · Zheng Kuang（匡正）**
+
+2026-10-28 增补选刊执行层的编辑初筛检验；Journal Selection 规范正文 v0.2.1 与 DCGI、v5、压力测试冻结正文不变。原公开版第一版保留为历史文件。
 
 “Constitution”在这里指作者为自身数学研究实践建立的工作性宪章，限定判断与修订的职责、程序和权限，而不制定适用于所有研究者的普遍规范。AI 受这些程序约束，但不构成其权威的来源。
 
@@ -12,9 +14,9 @@
 
 | 需要 | 入口 |
 | --- | --- |
-| 阅读完整理由、各制度正文与配置 | [完整可读版 PDF](editions/The_kz_Constitution_Public_Edition_1.pdf) |
-| 将相关规则用于 AI 协作 | [AI 执行合订本](editions/The_kz_Constitution_AI_Execution_Public_Edition_1.md) |
-| 查看公开版范围、版本与来源关系 | [发行说明](RELEASE.md) |
+| 阅读完整理由、各制度正文与配置 | [完整可读版 PDF](editions/The_kz_Constitution_Public_Edition_1_1_2026-10-28.pdf) |
+| 将相关规则用于 AI 协作 | [AI 执行合订本](editions/The_kz_Constitution_AI_Execution_Public_Edition_1_1_2026-10-28.md) |
+| 查看公开版范围、版本与来源关系 | [当前发行说明](RELEASE_1_1_2026-10-28.md) |
 | 查看本次整理做了什么 | [变更记录](CHANGELOG.md) |
 | 查看或维护各组件的来源文本 | [来源目录](sources/) |
 

@@ -1,6 +1,6 @@
 {
-  "edition": "公开版第一版",
-  "date": "2026-10-26",
+  "edition": "公开版第一版修订 1.1",
+  "date": "2026-10-28",
   "说明": "本表记录 AI 合订本逐字收录的十个公开来源区块。",
   "blocks": [
     {
@@ -54,10 +54,10 @@
     {
       "id": "J2",
       "title": "期刊选择执行协议",
-      "path": "sources/Journal_Selection/Journal_Selection_Execution_v0_2_1.md",
+      "path": "sources/Journal_Selection/Journal_Selection_Execution_v0_2_2.md",
       "format": "md",
-      "bytes": 6766,
-      "sha256": "98e5cb9e489d50acfc640975540e2345ad62dbb5242701c98219585de6f9e817"
+      "bytes": 7635,
+      "sha256": "1341494753dd0d3f86e5f75a0c6793397bc0a98ddcb33d87128f31572cd142d0"
     },
     {
       "id": "S1",
