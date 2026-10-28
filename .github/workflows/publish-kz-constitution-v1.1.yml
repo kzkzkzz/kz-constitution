@@ -1,0 +1,35 @@
+name: Publish kz Constitution Public Edition 1.1
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/publish-kz-constitution-v1.1.yml
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out publication files
+        uses: actions/checkout@v4
+      - name: Publish versioned GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if gh release view v1.1 --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Version v1.1 is already published; no replacement attempted."
+            exit 0
+          fi
+          gh release create v1.1 \
+            "editions/The_kz_Constitution_Public_Edition_1_1_2026-10-28.pdf#Public Edition 1.1 PDF" \
+            "editions/The_kz_Constitution_AI_Execution_Public_Edition_1_1_2026-10-28.md#AI execution Markdown" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "9ccc4271dc8abcd6852d1a4ab03dc0ba6c281ada" \
+            --title "The kz Constitution — Public Edition 1.1" \
+            --notes-file "RELEASE_1_1_2026-10-28.md" \
+            --latest
